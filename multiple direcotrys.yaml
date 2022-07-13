@@ -1,0 +1,16 @@
+---
+- hosts: all
+  tasks:
+    - name: multiple directoryes with permission
+      file:
+        path: /opt/{{item}}
+        state: directory
+        owner: root
+        group: root
+        mode: 0724
+      with_items:
+      - karthik
+      - rupesh
+      - baba
+      - cloudgen
+      
