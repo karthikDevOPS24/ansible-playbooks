@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+    - name: multiplefiles with symbolic
+      file:
+        path: /opt/{{item}}
+        state: touch
+        owner: root
+        group: root
+        mode: u=rwx,g=rw,o=rx
+      with_items:
+      - azure.exc
+      - devops.exe
+      - aws.exc
+      - java.exe
