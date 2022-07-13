@@ -1,0 +1,52 @@
+---
+- hosts: all
+  tasks:
+    - name: creating a file
+      file:
+        path: opt/devops1
+        state: touch 
+
+
+---
+- hosts: all
+  tasks:
+    - name: creating multiple files at a time
+      file:
+        path: /opt/{{item}}
+        state: touch
+      with_items:
+      - sum.java
+      - hello.paython
+      - karthik.txt
+      - anand.txt
+
+---
+- hosts: all
+  tasks:
+    - name: multiplefiles with symbolic
+      file:
+        path: /opt/{{item}}
+        state: touch
+        owner: root
+        group: root
+        mode: u=rwx,g=rw,o=rx
+      with_items:
+      - azure.exc
+      - devops.exe
+      - aws.exc
+      - java.exe
+---
+- hosts: all
+  tasks:
+    - name: multiple directoryes with permission
+      file:
+        path: /opt/{{item}}
+        state: directory
+        owner: root
+        group: root
+        mode: 724
+      with_items:
+      - karthik
+      - rupesh
+      - baba
+      - cloudgen
